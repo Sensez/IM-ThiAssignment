@@ -19,23 +19,29 @@
     <k:KinectRegion x:Name="kinectRegion">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="120" />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Margin="10,0,9.6,10.4">
+            <Grid Grid.Row="0" Margin="10,0,9.6,10.6">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="205" />
+                    <ColumnDefinition Width="410" />
+                    <ColumnDefinition Width="205" />
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="backButton" Grid.Column="0" Style="{StaticResource BackButtonStyle}" Click="Exit" />
+                <Button x:Name="backButton" Click="Exit" Background="White" Grid.Column="0" Grid.Row="0" Height="Auto" Width="Auto">
+                    <Image Source="Numbers/Escape.jpg" />
+                </Button>
 
-                <Image Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Source="Images\Logo.png" Stretch="None" Margin="0 0 0 4"/>
+                <Button x:Name="helpButton" Click="Help" Background="White" Grid.Column="3" Grid.Row="0" Height="Auto" Width="Auto">
+                    <Image Source="Numbers/Help.jpg" />
+                </Button>
+
                 <k:KinectUserViewer Grid.Column="1" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top" />
             </Grid>
 
-            <ContentControl x:Name="navigationRegion" k:KinectRegion.IsScrollInertiaEnabled="true" Margin="0,150,-0.4,10.6" Grid.RowSpan="2">
+            <ContentControl x:Name="navigationRegion" k:KinectRegion.IsScrollInertiaEnabled="true" Margin="0,14.4,-0.4,10.4" Grid.Row="1">
                 <Grid x:Name="kinectRegionGrid" Margin="10,20,10,20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="200" />
@@ -78,8 +84,11 @@
                     <Button x:Name="Nine" Click="Number" Grid.Column="2" Grid.Row="2">
                         <Image Source="Numbers/Nine.jpg"/>
                     </Button>
-                    <Button x:Name="Equals" Click="ResultRequest" Grid.Column="4" Grid.Row="2">
+                    <Button x:Name="Equals" Click="ResultRequest" Background="White" Grid.Column="4" Grid.Row="2">
                         <Image Source="Numbers/Equals.jpg"/>
+                    </Button>
+                    <Button x:Name="Erase" Click="EraseLastChar" Grid.Column="4" Grid.Row="0">
+                        <Image Source="Numbers/Erase.jpg"/>
                     </Button>
                 </Grid>
             </ContentControl>

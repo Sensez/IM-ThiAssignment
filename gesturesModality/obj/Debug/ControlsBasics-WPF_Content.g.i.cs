@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("numbers/equals.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("numbers/erase.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("numbers/escape.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("numbers/help.jpg")]
 
 

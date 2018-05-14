@@ -45,14 +45,10 @@ namespace AppGui
                 "Bem vindo ! Em que lhe posso ser util hoje ?",
                 "Ora aqui estou eu, Cheila, a magnifica calculadora ! Que contas vamos fazer hoje ?" };
 
-            String[] help = { "Pode contar comigo para efetuar operações com dois números de até 4 digitos." +
-                    " As operações disponíveis são as de soma, multiplicação, divisão, subtração, raiz quadrada, " +
-                    "e elevar a um numero. Um exemplo de utilização seria: Cheila, soma 5 e 5",
-                "Tenho todo o prazer em o ajudar, tente por exemplo algo como, quanto é um numero mais outro, ou melhor ainda, " +
-                "quanto é a soma de um numero com outro. Pode dividir, somar, subtrair, multiplicar e ainda aplicar raizes e elevar numeros. Todas as operações são válidas" +
-                "para numeros com até 4 digitos.",
-                "Pode contar comigo para o auxiliar a efetuar operações tais como as de soma, multiplicação, divisão e subtração a numeros com até 4 digitos." +
-                "Porque não tenta efetuar desde já uns calculos teste, como por exemplo, somar um numero com outro" };
+            String help = "Pode contar comigo para efetuar uma sequência de operações com numeros inteiros. " +
+                    "Poderá efetuar somas, subtrações, multiplicações e divisões." +
+                    " Para tal, simplesmente tem que selecionar os números da interface gráfica e indicar segundo os gestos " +
+                    "disponiveis quais as operações a efetuar. ";
 
             String[] goodbye = {
                  "Ate amanhã, nem que seja para me dizer olá, porque eu merêço! Tenha um resto de um bom dia",
@@ -62,15 +58,20 @@ namespace AppGui
             switch (type)
             {
                 case "greeting": return greeting[random];
-                case "help": return help[random];
-                case "goodbye": return goodbye[random];
+                case "help": return help;
+                case "goodbye": _t.goodbye(); return goodbye[random];
                 default: return "";
             }
         }
         public void getExpression(dynamic json)
         {
             expression = (string)json.recognized[0].ToString();
-            Console.WriteLine(expression);
+            switch (expression)
+            {
+                case "goodbye": _t.Speak(chooseRandomSpeech("goodbye")); break;
+                case "help": _t.Speak(chooseRandomSpeech("help")); break;
+                default: _t.Speak("O resultado da operação é " + _calc.makeCalculation(expression).ToString()); break;
+            }
         }
     }
 }

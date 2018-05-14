@@ -63,7 +63,7 @@
 
         private void Exit(object sender, RoutedEventArgs e)
         {
-            sendMessage("Shutdown");
+            sendMessage("goodbye");
             Environment.Exit(-1);
         }
 
@@ -90,6 +90,26 @@
         private void ResultRequest(object sender, RoutedEventArgs e)
         {
             sendMessage(expression);
+        }
+
+        private void EraseLastChar(object sender, RoutedEventArgs e)
+        {
+            if (!expression.Equals(""))
+            {
+               if(char.IsDigit(expression[expression.Length - 1]))
+                {
+                    expression = expression.Remove(expression.Length-1);
+                }
+                else
+                {
+                    expression = expression.Remove(expression.Length - 3);
+                }
+            }
+        }
+
+        private void Help(object sender, RoutedEventArgs e)
+        {
+            sendMessage("help");
         }
 
         public void sendMessage(String message)

@@ -5,6 +5,7 @@ namespace AppGui
 {
     class Tts
     {
+        Boolean gb = false;
         SpeechSynthesizer tts = null;
         public Tts()
         {
@@ -20,7 +21,15 @@ namespace AppGui
 
         void tts_SpeakCompleted(object sender, SpeakCompletedEventArgs e)
         {
+            if (gb)
+            {
+                Environment.Exit(-1);
+            }
+        }
 
+        public void goodbye()
+        {
+            this.gb = true;
         }
     }
 }
