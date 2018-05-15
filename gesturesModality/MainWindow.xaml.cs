@@ -73,16 +73,16 @@
 
             switch (button.Name)
             {
-                case "Zero": expression += "0";  break;
-                case "One": expression += "1";  break;
-                case "Two": expression += "2";  break;
-                case "Three": expression += "3";  break;
-                case "Four": expression += "4";  break;
-                case "Five": expression += "5";  break;
-                case "Six": expression += "6";  break;
-                case "Seven": expression += "7";  break;
-                case "Eight": expression += "8";  break;
-                case "Nine": expression += "9";  break;
+                case "Zero": changeExpression("0");  break;
+                case "One": changeExpression("1"); break;
+                case "Two": changeExpression("2");  break;
+                case "Three": changeExpression("3"); break;
+                case "Four": changeExpression("4"); break;
+                case "Five": changeExpression("5"); break;
+                case "Six": changeExpression("6"); break;
+                case "Seven": changeExpression("7"); break;
+                case "Eight": changeExpression("8"); break;
+                case "Nine": changeExpression("9"); break;
             }
             Console.WriteLine("expression: " + expression);
         }
@@ -94,15 +94,18 @@
 
         private void EraseLastChar(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine("entrei crlh");
             if (!expression.Equals(""))
             {
                if(char.IsDigit(expression[expression.Length - 1]))
                 {
                     expression = expression.Remove(expression.Length-1);
+                    changeExpression("");
                 }
                 else
                 {
                     expression = expression.Remove(expression.Length - 3);
+                    changeExpression("");
                 }
             }
         }
@@ -127,12 +130,19 @@
         public void AddOperator(String op) {
             switch (op)
             {
-                case "+": expression += ",+,"; break;
-                case "-": expression += ",-,"; break;
-                case "/": expression += ",/,"; break;
-                case "*": expression += ",*,"; break;
+                case "+": changeExpression(",+,"); break;
+                case "-": changeExpression(",-,"); break;
+                case "/": changeExpression(",/,"); break;
+                case "*": changeExpression(",*,"); break;
             }
             Console.WriteLine("expression: " + expression);
+        }
+
+        public void changeExpression(String ext)
+        {
+            expression += ext;
+            TextRegion.Text = expression.Replace("," , "");
+            Console.WriteLine(expression);
         }
 
         private Boolean waitingForOp()

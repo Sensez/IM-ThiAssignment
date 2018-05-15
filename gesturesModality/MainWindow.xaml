@@ -8,7 +8,7 @@
         Name="ControlsBasicsWindow"
         Title="Controls Basics"
         mc:Ignorable="d"
-        d:DesignWidth="900"
+        d:DesignWidth="1615.2"
         d:DesignHeight="843.894"
         MinWidth="500"
         MinHeight="700"
@@ -16,7 +16,7 @@
         WindowState="Maximized"
         >
 
-    <k:KinectRegion x:Name="kinectRegion">
+    <k:KinectRegion x:Name="kinectRegion" Margin="0,0,3.4,0.4">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="120" />
@@ -41,7 +41,7 @@
                 <k:KinectUserViewer Grid.Column="1" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top" />
             </Grid>
 
-            <ContentControl x:Name="navigationRegion" k:KinectRegion.IsScrollInertiaEnabled="true" Margin="0,14.4,-0.4,10.4" Grid.Row="1">
+            <ContentControl x:Name="navigationRegion" k:KinectRegion.IsScrollInertiaEnabled="true" Margin="0,14,74.2,10.4" Grid.Row="1">
                 <Grid x:Name="kinectRegionGrid" Margin="10,20,10,20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="200" />
@@ -92,6 +92,21 @@
                     </Button>
                 </Grid>
             </ContentControl>
+            <Grid HorizontalAlignment="Left" Height="804" Margin="916,0,0,0" VerticalAlignment="Top" Width="697" Grid.RowSpan="2">
+                <TextBlock x:Name="TextRegion" HorizontalAlignment="Left" Margin="33,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="619" Height="83"/>
+                <Button HorizontalAlignment="Left" Background="White" Margin="316,177,0,0" VerticalAlignment="Top" Width="222" Height="254">
+                    <Image Source="Numbers/Human.jpg" Width="212"/>
+                </Button>
+                <Button HorizontalAlignment="Left" Background="White" Margin="33,177,0,0" VerticalAlignment="Top" Width="222" Height="254">
+                    <Image Source="Numbers/Human.jpg" Width="212"/>
+                </Button>
+                <Button HorizontalAlignment="Left" Background="White" Margin="316,489,0,0" VerticalAlignment="Top" Width="222" Height="254">
+                    <Image Source="Numbers/Human.jpg" Width="212"/>
+                </Button>
+                <Button HorizontalAlignment="Left" Background="White" Margin="33,489,0,0" VerticalAlignment="Top" Width="222" Height="254">
+                    <Image Source="Numbers/Human.jpg" Width="212"/>
+                </Button>
+            </Grid>
         </Grid>
     </k:KinectRegion>
 </Window>
