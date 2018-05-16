@@ -154,7 +154,10 @@
     <Resource Include="Numbers\Help.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Numbers\Human.jpg" />
+    <Resource Include="Numbers\addition.png" />
+    <Resource Include="Numbers\division.png" />
+    <Resource Include="Numbers\multiplication.png" />
+    <Resource Include="Numbers\subtraction.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("numbers/human.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("numbers/addition.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("numbers/division.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("numbers/multiplication.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("numbers/subtraction.png")]
 
 

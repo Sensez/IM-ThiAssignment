@@ -124,6 +124,8 @@
 
             Console.WriteLine(message);
             var exNot = lce.ExtensionNotification("", "", 1, json);
+            TextRegion.Text = "";
+            expression = "";
             mmic.Send(exNot);
         }
 
@@ -173,9 +175,9 @@
                                 switch (gesture.Name)
                                 {
                                     case "Minus": if (result.Confidence > 0.95) AddOperator("-"); break;
-                                    case "Times": if (result.Confidence > 0.95) AddOperator("*"); break;
+                                    case "Times": if (result.Confidence > 0.90) AddOperator("*"); break;
                                     case "Plus": if (result.Confidence > 0.95) AddOperator("+"); break;
-                                    case "divide": if (result.Confidence > 0.95) AddOperator("/"); break;
+                                    case "divide": if (result.Confidence > 0.90) AddOperator("/"); break;
                                 }
                             }
                         }
