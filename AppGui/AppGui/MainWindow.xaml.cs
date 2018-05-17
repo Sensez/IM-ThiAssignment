@@ -39,7 +39,7 @@ namespace AppGui
 
         public Boolean CheckCorrectness(String exp)
         {
-            if ((exp.Contains("+") || exp.Contains("/") || exp.Contains(":") || exp.Contains("*")) && char.IsDigit(exp[exp.Length - 1]))
+            if ((exp.Contains("+") || exp.Contains("/") || exp.Contains("-") || exp.Contains("*")) && char.IsDigit(exp[exp.Length - 1]))
                 return true;
             else
                 return false;

@@ -23,11 +23,17 @@
 
         private MultiSourceFrameReader multiFrameReader;
         private Body[] bodies;
+        private Calculator _calc;
+        private Boolean gotResult;
+        private double lastResult;
 
         public MainWindow()
         {
+            this.lastResult = 0;
             this.InitializeComponent();
             this.expression = "";
+            this._calc = new Calculator();
+            this.gotResult = false;
 
             this.lce = new LifeCycleEvents("GESTURES", "FUSION", "gm-1", "gestures", "command");
             this.mmic = new MmiCommunication("localhost", 8000, "User1", "GESTURES");
@@ -71,6 +77,13 @@
         {
             var button = sender as Button;
 
+            if(gotResult == true)
+            {
+                expression = "";
+                gotResult = false;
+                lastResult = 0;
+                TextRegion.Text = expression;
+            }
             switch (button.Name)
             {
                 case "Zero": changeExpression("0");  break;
@@ -94,7 +107,6 @@
 
         private void EraseLastChar(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("entrei crlh");
             if (!expression.Equals(""))
             {
                if(char.IsDigit(expression[expression.Length - 1]))
@@ -122,14 +134,28 @@
             json = json.Substring(0, json.Length - 2);
             json += "] }";
 
-            Console.WriteLine(message);
+            lastResult = _calc.makeCalculation(expression);
+            TextRegion.Text = lastResult.ToString();
+            expression = lastResult.ToString();
+            _calc.resetValues();
+            gotResult = true;
+
+            if (TextRegion.Text.Contains(","))
+            {
+                gotResult = false;
+                lastResult = 0;
+                expression = "";
+            }
+
             var exNot = lce.ExtensionNotification("", "", 1, json);
-            TextRegion.Text = "";
-            expression = "";
             mmic.Send(exNot);
         }
 
         public void AddOperator(String op) {
+
+            if(gotResult == true)
+                gotResult = false;
+
             switch (op)
             {
                 case "+": changeExpression(",+,"); break;
@@ -144,7 +170,6 @@
         {
             expression += ext;
             TextRegion.Text = expression.Replace("," , "");
-            Console.WriteLine(expression);
         }
 
         private Boolean waitingForOp()
@@ -174,9 +199,9 @@
                             {
                                 switch (gesture.Name)
                                 {
+                                    case "Plus": if (result.Confidence > 0.75) AddOperator("+"); break;
                                     case "Minus": if (result.Confidence > 0.95) AddOperator("-"); break;
                                     case "Times": if (result.Confidence > 0.90) AddOperator("*"); break;
-                                    case "Plus": if (result.Confidence > 0.95) AddOperator("+"); break;
                                     case "divide": if (result.Confidence > 0.90) AddOperator("/"); break;
                                 }
                             }
