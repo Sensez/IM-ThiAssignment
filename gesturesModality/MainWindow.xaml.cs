@@ -97,7 +97,6 @@
                 case "Eight": changeExpression("8"); break;
                 case "Nine": changeExpression("9"); break;
             }
-            Console.WriteLine("expression: " + expression);
         }
 
         private void ResultRequest(object sender, RoutedEventArgs e)
@@ -163,7 +162,6 @@
                 case "/": changeExpression(",/,"); break;
                 case "*": changeExpression(",*,"); break;
             }
-            Console.WriteLine("expression: " + expression);
         }
 
         public void changeExpression(String ext)
@@ -199,7 +197,7 @@
                             {
                                 switch (gesture.Name)
                                 {
-                                    case "Plus": if (result.Confidence > 0.75) AddOperator("+"); break;
+                                    case "Plus": if (result.Confidence > 0.8) AddOperator("+"); break;
                                     case "Minus": if (result.Confidence > 0.95) AddOperator("-"); break;
                                     case "Times": if (result.Confidence > 0.90) AddOperator("*"); break;
                                     case "divide": if (result.Confidence > 0.90) AddOperator("/"); break;
